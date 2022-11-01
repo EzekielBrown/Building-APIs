@@ -1,0 +1,22 @@
+{
+  "name": "building-apis",
+  "version": "1.0.0",
+  "description": "webstore",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzekielBrown/Building-APIs.git"
+  },
+  "author": "Ezekiel Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzekielBrown/Building-APIs/issues"
+  },
+  "homepage": "https://github.com/EzekielBrown/Building-APIs#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
