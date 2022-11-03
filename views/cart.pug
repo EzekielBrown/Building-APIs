@@ -1,0 +1,101 @@
+doctype
+html(lang='en')
+
+include includes/head.pug
+body
+include includes/navbar.pug
+
+main.page.contact-us-page
+  section.clean-block.clean-form.dark
+    .shopping-cart
+      .px-4.px-lg-0
+        .pb-5
+          .container
+            .row
+              .col-lg-12.p-5.bg-white.rounded.shadow-sm.mb-5
+                // Shopping cart table
+                .table-responsive
+                  table.table
+                    thead
+                      tr
+                        th.border-0.bg-light(scope='col')
+                          .p-2.px-3.text-uppercase Product
+                        th.border-0.bg-light(scope='col')
+                          .py-2.text-uppercase Price
+                        th.border-0.bg-light(scope='col')
+                          .py-2.text-uppercase Quantity
+                        th.border-0.bg-light(scope='col')
+                          .py-2.text-uppercase Remove
+                    tbody
+                      tr
+                        th.border-0(scope='row')
+                          .p-2
+                            img.img-fluid.rounded.shadow-sm(src='https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg' alt='' width='70')
+                            .ml-3.d-inline-block.align-middle
+                              h5.mb-0
+                                a.text-dark.d-inline-block.align-middle(href='#') Timex Unisex Originals
+                              span.text-muted.font-weight-normal.font-italic.d-block Category: Watches
+                        td.border-0.align-middle
+                          strong $79.00
+                        td.border-0.align-middle
+                          strong 3
+                        td.border-0.align-middle
+                          a.text-dark(href='#')
+                            i.fa.fa-trash
+                      tr
+                        th(scope='row')
+                          .p-2
+                            img.img-fluid.rounded.shadow-sm(src='https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg' alt='' width='70')
+                            .ml-3.d-inline-block.align-middle
+                              h5.mb-0
+                                a.text-dark.d-inline-block(href='#') Lumix camera lense
+                              span.text-muted.font-weight-normal.font-italic Category: Electronics
+                        td.align-middle
+                          strong $79.00
+                        td.align-middle
+                          strong 3
+                        td.align-middle
+                          a.text-dark(href='#')
+                            i.fa.fa-trash
+                      tr
+                        th(scope='row')
+                          .p-2
+                            img.img-fluid.rounded.shadow-sm(src='https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg' alt='' width='70')
+                            .ml-3.d-inline-block.align-middle
+                              h5.mb-0
+                                a.text-dark.d-inline-block(href='#') Gray Nike running shoe
+                              span.text-muted.font-weight-normal.font-italic Category: Fashion
+                        td.align-middle
+                          strong $79.00
+                        td.align-middle
+                          strong 3
+                        td.align-middle
+                          a.text-dark(href='#')
+                            i.fa.fa-trash
+                // End
+            .row.py-5.p-4.bg-white.rounded.shadow-sm
+              .col-lg-6
+                .bg-light.rounded-pill.px-4.py-3.text-uppercase.font-weight-bold Order summary 
+                .p-4
+                  p.font-italic.mb-4 Shipping and additional costs are calculated based on values you have entered.
+                  ul.list-unstyled.mb-4
+                    li.d-flex.justify-content-between.py-3.border-bottom
+                      strong.text-muted Order Subtotal 
+                      strong $390.00
+                    li.d-flex.justify-content-between.py-3.border-bottom
+                      strong.text-muted Shipping and handling
+                      strong $10.00
+                    li.d-flex.justify-content-between.py-3.border-bottom
+                      strong.text-muted Tax
+                      strong $0.00
+                    li.d-flex.justify-content-between.py-3.border-bottom
+                      strong.text-muted Total
+                      h5.font-weight-bold $400.00
+                  a.btn.btn-dark.rounded-pill.py-2.btn-block(href='#') Procceed to checkout
+
+        include includes/footer.pug
+
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js')
+        script(src='/views/assets/js/vanilla-zoom.js')
+        script(src='/views/assets/js/theme.js')

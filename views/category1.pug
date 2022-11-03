@@ -1,0 +1,79 @@
+doctype
+html(lang='en')
+
+include includes/head.pug
+body
+include includes/navbar.pug
+
+main.page
+  section.clean-block.features
+    .container
+      .block-heading
+        h2.text-info Category 1
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+    .row.product-list
+      .col-sm-6.col-md-4.product-item
+        .product-container
+          .row
+            .col-md-12
+              a.product-image(href='#')
+                img(src='/views/assets/img/product.png')
+          .row
+            .col-8
+              h2
+                a(href='#') Product 1
+          .row
+            .col-12
+              p.product-description
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.
+              .row
+                .col-6
+                  button.btn.btn-light(type='button') Add To Cart
+                .col-6
+                  p.product-price $99.00 
+      .col-sm-6.col-md-4.product-item
+        .product-container
+          .row
+            .col-md-12
+              a.product-image(href='#')
+                img(src='/views/assets/img/product.png')
+          .row
+            .col-8
+              h2
+                a(href='#') Product 2
+          .row
+            .col-12
+              p.product-description
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.
+              .row
+                .col-6
+                  button.btn.btn-light(type='button') Add To Cart
+                .col-6
+                  p.product-price $99.00 
+      .col-sm-6.col-md-4.product-item
+        .product-container
+          .row
+            .col-md-12
+              a.product-image(href='#')
+                img(src='/views/assets/img/product.png')
+          .row
+            .col-8
+              h2
+                a(href='#') Product 3
+          .row
+            .col-12
+              p.product-description
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.
+              .row
+                .col-6
+                  button.btn.btn-light(type='button') Add To Cart
+                .col-6
+                  p.product-price $99.00 
+
+include includes/footer.pug
+
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js')
+        script(src='/views/assets/js/vanilla-zoom.js')
+        script(src='/views/assets/js/theme.js')

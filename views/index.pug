@@ -1,0 +1,48 @@
+doctype
+html(lang='en')
+
+include includes/head.pug
+body
+include includes/navbar.pug
+
+main.page.landing-page
+  section.clean-block.clean-hero(style='background-image:url("/views/assets/img/home.png");color:rgba(9, 162, 255, 0.85);')
+    .text
+      h2 Welcome to Building APIs Website
+      p Your one stop shop to everything APIs
+      button.btn.btn-outline-light.btn-lg(type='button') Start Browsing
+  section.clean-block.features
+    .container
+      .block-heading
+        h2.text-info Categories
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+      .row.justify-content-center
+        .col-md-5.feature-box
+          i.icon-rocket.icon
+          h4 Category 1
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+        .col-md-5.feature-box
+          i.icon-umbrella.icon
+          h4 Category 2
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+        .col-md-5.feature-box
+          i.icon-screen-smartphone.icon
+          h4 Category 3
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+        .col-md-5.feature-box
+          i.icon-refresh.icon
+          h4 Category 4
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.
+
+
+        include includes/footer.pug
+
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js')
+        script(src='/views/assets/js/vanilla-zoom.js')
+        script(src='/views/assets/js/theme.js')

@@ -1,0 +1,22 @@
+nav.navbar.navbar-light.navbar-expand-lg.fixed-top.bg-white.clean-navbar
+  .container
+    a.navbar-brand.logo(href='#') Building APIs
+    button.navbar-toggler(data-bs-toggle='collapse' data-bs-target='#navcol-1')
+      span.visually-hidden Toggle navigation
+      span.navbar-toggler-icon
+    #navcol-1.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto
+        li.nav-item
+          a.nav-link.active(href='/') Home
+        li.nav-item
+          .nav-item.dropdown
+            a.dropdown-toggle.nav-link(aria-expanded='false' data-bs-toggle='dropdown' href='#') Categories
+            .dropdown-menu
+              a.dropdown-item.nav-link(href='category1') Category 1
+              a.dropdown-item.nav-link(href='category2') Category 2
+              a.dropdown-item.nav-link(href='category3') Category 3
+              a.dropdown-item.nav-link(href='category4') Category 4
+        li.nav-item
+          a.nav-link(href='login') Login
+        li.nav-item
+          a.nav-link(href='cart') Cart
