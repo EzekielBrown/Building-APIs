@@ -1,117 +1,121 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+  }
+
 const express = require('express');
 const path = require('path');
-const jwt = require('jsonwebtoken');
-const session = require('express-session');
-const store = new session.MemoryStore();
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
+
+
+const initializePassport = require('./passport-config');
+initializePassport(
+    passport,
+    email => users.find(user => user.email === email),
+    id => users.find(user => user.id === id)
+  )
 
 const app = express();
 const port = process.env.PORT || "3000";
 
-const users = [
-    { name: "Kevin", age: 25 },
-    { name: "John", age: 30 },
-    { name: "Jane", age: 20 }
-];
+const users = []
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './views'));
 
 // Middleware
-app.use(session({
-    secret: 'some secret',
-    cookie: { maxAge: 60000 },
-    resave: false,
-    saveUninitialized: false,
-    store
-}))
-
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    console.log(store)
-    next();
-});
 
 app.use(express.static(path.join(__dirname, './views')));
 app.use(express.urlencoded({ extended: false }));
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
+
 
 // Routes
-app.get('/users', (req, res) => {
-    res.status(200).send(users);
+
+app.get('/', checkNotAuthenticated, (req, res) => {
+    res.render('index', { name: req.user.username });
 });
 
-app.get('/users/:name', (req, res) => {
-    const { name } = req.params;
-    const user = users.find(user => user.name === name);
-    if (user) res.status(200).send(user);
-    else res.status(404).send('User not found');
+app.get('/login' , checkNotAuthenticated, (req, res) => {
+    res.render('login');
 });
 
-app.get('/', (req, res) => {
-    res.status(200).render('index', { users });
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  }))
+
+app.get('/register', checkNotAuthenticated, (req, res) => {
+    res.render('register');
 });
 
-app.get('/login' , (req, res) => {
-    res.status(200).render('login');
-});
+app.post('/register', checkNotAuthenticated, async (req, res) => {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      users.push({
+        id: Date.now().toString(),
+        username: req.body.username,
+        password: hashedPassword
+      })
+      res.redirect('/login')
+    } catch {
+      res.redirect('/register')
+    }
+    console.log(users);
+})
 
-app.get('/cart' , (req, res) => {
-    res.status(200).render('cart');
-});
-
-app.get('/category1' , (req, res) => {
-    res.status(200).render('category1');
-});
-
-app.get('/category2' , (req, res) => {
-    res.status(200).render('category2');
-});
-
-app.get('/category3' , (req, res) => {
-    res.status(200).render('category3');
-});
-
-app.get('/category4' , (req, res) => {
-    res.status(200).render('category4');
-});
-
-function validateCookie(req, res, next) {
-    const { cookies } = req;
-    if ("session_id" in cookies) {
-        console.log("session_id found");
-        if (cookies.session_id === "123456") {
-            next();
-        } else {
-            res.status(401).send("Unauthorized");
-        }
+app.delete('/logout', (req, res) => {
+    req.logOut()
+    res.redirect('/login')
+  })
+  
+  function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+  
+    res.redirect('/login')
+  }
+  
+  function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return res.redirect('/')
     }
     next()
-}
+  }
 
-app.get('/signin', (req, res) => {
-    res.cookie('session_id', '123456');
-    res.status(200).json({ message: 'Logged in' });
+
+app.get('/cart', checkNotAuthenticated, (req, res) => {
+    res.render('cart');
 });
 
-app.post('/logon', (req, res) => {
-    console.log(req.sessionID);
-    const { username, password } = req.body;
-    if (username && password) {
-        if(req.session.authenticated) {
-            res.json(req.session);
-        } else {
-            if (password === '123') {
-                req.session.authenticated = true;
-                req.session.user = { 
-                    username, password
-                };
-                res.json(req.session);
-            } else {
-                res.status(401).json({ message: 'Invalid credentials' });
-            }
-        } 
-    }else {
-        res.status(400).json({ message: 'Invalid request' });
-}});
+app.get('/category1',checkNotAuthenticated, (req, res) => {
+    res.render('category1');
+});
+
+app.get('/category2' ,checkNotAuthenticated, (req, res) => {
+    res.render('category2');
+});
+
+app.get('/category3' ,checkNotAuthenticated, (req, res) => {
+    res.render('category3');
+});
+
+app.get('/category4' ,checkNotAuthenticated,(req, res) => {
+    res.render('category4');
+});
 
 // Server
 app.listen(port, () => {

@@ -31,37 +31,25 @@
     </div>
   </div>
 </nav>
-<main class="page landing-page">
-  <section class="clean-block clean-hero" style="background-image:url(&quot;/views/assets/img/home.png&quot;);color:rgba(9, 162, 255, 0.85);">
-    <div class="text">
-      <h2>Welcome to Building APIs Website</h2>
-      <p>Your one stop shop to everything APIs</p>
-      <button class="btn btn-outline-light btn-lg" type="button">Start Browsing</button>
-    </div>
-  </section>
-  <section class="clean-block features">
+<main class="page">
+  <section class="clean-block about-us">
     <div class="container">
-      <div class="block-heading">
-        <h2 class="text-info">Categories</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-5 feature-box"><i class="icon-rocket icon"></i>
-          <h4>Category 1</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-        </div>
-        <div class="col-md-5 feature-box"><i class="icon-umbrella icon"></i>
-          <h4>Category 2</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-        </div>
-        <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
-          <h4>Category 3</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-        </div>
-        <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
-          <h4>Category 4</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-        </div>
+      <section class="login-clean" style="background-color: transparent;font-family: Poppins, sans-serif;">
+        <form method="post" style="margin-top: 40px;" action="register">
+          <h2 class="visually-hidden">Login Form</h2>
+          <div class="illustration"><i class="icon-user" style="color: #3b99e0;"></i></div>
+          <div class="form-group mb-3">
+            <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+          </div>
+          <div class="form-group mb-3">
+            <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+          </div>
+          <div class="form-group mb-3">
+            <button class="btn btn-primary d-block w-100" type="submit" style="background-color: #3b99e0;">Register</button>
+          </div>
+        </form>
+      </section>
+      <section class="clean-block clean-info" style="background-color: transparent;"> 
         <footer class="page-footer dark">
           <p class="text-center text-white d-xl-flex justify-content-xl-center align-items-xl-center">&copy; 2022 Building APIs</p>
         </footer>
@@ -69,7 +57,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
         <script src="/views/assets/js/vanilla-zoom.js"></script>
         <script src="/views/assets/js/theme.js"></script>
-      </div>
+      </section>
     </div>
   </section>
 </main>
