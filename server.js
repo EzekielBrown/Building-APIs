@@ -3,6 +3,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 const local = require('./strategies/local');
 
@@ -39,31 +40,51 @@ app.use('/auth', authRouter);
 
 // Routes
 app.get('/', (req, res) => {
-    res.status(200).render('index');
+    res.render('index');
 });
 
 app.get('/login' , (req, res) => {
-    res.status(200).render('login');
+    res.render('login');
 });
 
+app.get('/register' , (req, res) => {
+    res.render('register');
+});
+
+app.post('/register', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const hashedPassword =  await bcrypt.hashSync(password, 10);
+        const user = { username, password: hashedPassword };
+        users.push(user);
+        res.redirect('/login');
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
+app.post('/login', (req, res) => {
+})
+
 app.get('/cart' , (req, res) => {
-    res.status(200).render('cart');
+    res.render('cart');
 });
 
 app.get('/category1' , (req, res) => {
-    res.status(200).render('category1');
+    res.render('category1');
 });
 
 app.get('/category2' , (req, res) => {
-    res.status(200).render('category2');
+    res.render('category2');
 });
 
 app.get('/category3' , (req, res) => {
-    res.status(200).render('category3');
+    res.render('category3');
 });
 
 app.get('/category4' , (req, res) => {
-    res.status(200).render('category4');
+    res.render('category4');
 });
 
 // Server

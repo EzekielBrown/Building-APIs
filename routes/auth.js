@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', passport.authenticate('local'), (req, res) => {
-    res.sendStatus(200);
+    res.sendStatus(200).redirect('/cart');
 });
 
 
