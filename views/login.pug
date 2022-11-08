@@ -13,6 +13,8 @@ main.page
           .illustration
             i.icon-user(style='color: #3b99e0;')
           .form-group.mb-3
+            if (messages.error)
+              p.error= messages.error
             input.form-control(type='text' name='username' id='username' placeholder='Username' required)
           .form-group.mb-3
             input.form-control(type='password' name='password' id='password' placeholder='Password' required)
@@ -20,6 +22,8 @@ main.page
             button.btn.btn-primary.d-block.w-100(type='submit' style='background-color: #3b99e0;') Log In
           .form-group.mb-3
             a(href='register' style='color: #3b99e0;') Don't have an account? Sign up
+            form(method='post' action='/logout?_metthod=DELETE')
+              button.btn.btn-primary.d-block.w-100(type='submit' style='background-color: #3b99e0;') Log Out
       section.clean-block.clean-info(style='background-color: transparent;')  
 
 
