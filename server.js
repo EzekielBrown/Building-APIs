@@ -10,6 +10,8 @@ const local = require('./strategies/local');
 const authRouter = require('./routes/auth');
 const usersRoute = require('./routes/users');
 const productsRoute = require('./routes/products');
+const categoryRoute = require('./routes/category');
+const orderRoute = require('./routes/order');
 
 const store = new session.MemoryStore();
 const app = express();
@@ -37,6 +39,8 @@ app.use(passport.session());
 app.use('/users', usersRoute);
 app.use('/auth', authRouter);
 app.use('/products', productsRoute);
+app.use('/category', categoryRoute);
+app.use('/order', orderRoute);
 
 // Routes
 app.get('/', (req, res) => {
