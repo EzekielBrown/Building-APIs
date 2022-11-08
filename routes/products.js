@@ -15,10 +15,10 @@ router.get('/', async (req, res) => {
 
 
 router.post('/add', (req, res) => {
-    const { name, price, description, category} = req.body;
-    if (name && price && description && category) {
+    const { name,  description, price, category} = req.body;
+    if (name && description && price && category) {
         try{
-            db.promise().query(`INSERT INTO products VALUES ('${name}', '${price}', '${description}', '${category}')`);
+            db.promise().query(`INSERT INTO products VALUES ('${name}', '${description}', '${price}', '${category}')`);
             res.status(201).send({ message: 'Product created' });
         } catch (err) {
             console.log(err);
